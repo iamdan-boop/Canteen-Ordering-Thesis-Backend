@@ -38,4 +38,5 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: "canteen-ordering-system-thesis"
           heroku_email: "pinedadanjanus@gmail.com"
-          branch: dev
+
+
