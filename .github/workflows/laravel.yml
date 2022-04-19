@@ -22,10 +22,6 @@ jobs:
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Generate key
         run: php artisan key:generate
-      - name: Migrate Tables
-        run: php artisan migrate
-      - name: Seed Database
-        run: php artisan db:seed
       - name: Directory Permissions
         run: chmod -R 777 storage bootstrap/cache
       - name: Create Database
@@ -42,5 +38,17 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: "canteen-ordering-system-thesis"
           heroku_email: "pinedadanjanus@gmail.com"
+      - name: Create Database
+        env: 
+          DB_CONNECTION: pgsql
+          DB_DATABASE: ${{ secrets.DB_DATABASE }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_USERNAME: ${{ secrets.DB_PORT }}
+      - name: Migrate DB
+        run: php artisan migrate
+      - name: Seed DB
+        run: php artisan db:seed
 
 
