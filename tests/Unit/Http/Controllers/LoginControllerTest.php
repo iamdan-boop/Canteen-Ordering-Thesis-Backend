@@ -18,8 +18,7 @@ test('should return 403 status code when password doesnt match', function () {
     post('/api/authenticate', [
         'email' => $user->email,
         'password' => 'wrongPassword'
-    ])
-        ->assertExactJson(['message' => 'Invalid Credentials'])
+    ])->assertExactJson(['message' => 'Invalid Credentials'])
         ->assertForbidden();
 });
 
