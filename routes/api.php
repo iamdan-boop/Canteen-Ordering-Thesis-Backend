@@ -22,7 +22,7 @@ Route::group(['middleware' => ['guest']], function () {
 });
 
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth')->group(function () {
     Route::get('/me', \App\Http\Controllers\Api\MeController::class);
     Route::post('/verify', [RegisterController::class, 'update']);
 
