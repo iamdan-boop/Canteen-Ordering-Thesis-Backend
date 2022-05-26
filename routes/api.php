@@ -25,4 +25,10 @@ Route::group(['middleware' => ['guest']], function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', \App\Http\Controllers\Api\MeController::class);
     Route::post('/verify', [RegisterController::class, 'update']);
+
+
+    Route::prefix('products')->group(function () {
+        Route::get('/', [\App\Http\Controllers\ProductController::class, 'index']);
+        Route::get('/search', [\App\Http\Controllers\ProductController::class, 'searchProductName']);
+    });
 });
